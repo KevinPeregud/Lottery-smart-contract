@@ -23,6 +23,7 @@ contract Lottery  {
     }
     function enter() public payable {
     require(msg.value > .001 ether, "Ticket price is 0.001 ether");
+    require(msg.value < .0015 ether, "Ticket price is 0.001 ether");
     players.push(payable(msg.sender));
     if (address(this).balance >= 10 ether) {
         uint index = getRandomNumder() % players.length;
